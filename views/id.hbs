@@ -1,5 +1,6 @@
 <h1>UNFCU Customer Tenant</h1>
 <h3>ID Token</h3>
+
 <table border="1" cellpadding="10" cellspacing="0">
     <thead>
         <tr>
@@ -11,15 +12,7 @@
         {{#each idTokenClaims}}
         <tr>
             <td><strong>{{@key}}</strong></td>
-            <td>
-                {{#if (isArray this)}}
-                    {{#each this}}
-                        {{this}}<br>
-                    {{/each}}
-                {{else}}
-                    {{this}}
-                {{/if}}
-            </td>
+            <td>{{this}}</td>
         </tr>
         {{/each}}
     </tbody>
