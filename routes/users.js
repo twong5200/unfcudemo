@@ -20,6 +20,7 @@ router.get('/id',
         // Check if roles exist in idTokenClaims and determine user type
         const roles = req.session.account.idTokenClaims?.roles || [];
         const isMsr = Array.isArray(roles) && roles.includes('msr');
+        const isMsr2 = Array.isArray(roles) && roles.includes('msrlevel2');
         const isMember = Array.isArray(roles) && roles.includes('member');
 
         res.render('id', { 
