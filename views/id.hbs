@@ -1,15 +1,22 @@
 <h1>UNFCU Customer Tenant</h1>
 <h3>ID Token</h3>
-<table>
+<table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Claim</th>
+            <th>Value</th>
+        </tr>
+    </thead>
     <tbody>
         {{#each idTokenClaims}}
         <tr>
-            <td>{{@key}}</td>
+            <td><strong>{{@key}}</strong></td>
             <td>{{this}}</td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+
 <br>
 <!-- Role-specific content -->
 {{#if idTokenClaims.roles}}

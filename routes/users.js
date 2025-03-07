@@ -18,6 +18,7 @@ function isAuthenticated(req, res, next) {
 router.get('/id',
     isAuthenticated, // check if user is authenticated
     async function (req, res, next) {
+        console.log('ID Token Claims:', req.session.account.idTokenClaims);
         res.render('id', { idTokenClaims: req.session.account.idTokenClaims });
     }
 );
