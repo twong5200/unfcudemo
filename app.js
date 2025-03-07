@@ -78,12 +78,4 @@ hbs.registerHelper('eq', function (a, b, options) {
     return options.inverse ? options.inverse(this) : ''; // Render the else block (if it exists) or return an empty string
 });
 
-hbs.registerHelper('isArray', function (value, options) {
-    if (Array.isArray(value)) {
-        return options.fn(this); // Render the block content if the value is an array
-    } else {
-        return options.inverse ? options.inverse(this) : ''; // Render the else block (if it exists) or return an empty string
-    }
-});
-
 module.exports = app;
