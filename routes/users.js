@@ -11,15 +11,22 @@ function isAuthenticated(req, res, next) {
     if (!req.session.isAuthenticated) {
         return res.redirect('/auth/signin'); // redirect to sign-in route
     }
-
     next();
 };
 
 router.get('/id',
     isAuthenticated, // check if user is authenticated
     async function (req, res, next) {
-        console.log('ID Token Claims:', req.session.account.idTokenClaims);
-        res.render('id', { idTokenClaims: req.session.account.idTokenClaims });
+        // Check if roles exist in idTokenClaims and determine user type
+        const roles = req.session.account.idTokenClaims?.roles || [];
+        const isMsr = Array.isArray(roles) && roles.includes('msr');
+        const isMember = Array.isArray(roles) && roles.includes('member');
+
+        res.render('id', { 
+            idTokenClaims: req.session.account.idTokenClaims,
+            isMsr: isMsr,
+            isMember: isMember
+        });
     }
 );
 
