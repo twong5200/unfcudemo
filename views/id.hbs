@@ -11,11 +11,20 @@
         {{#each idTokenClaims}}
         <tr>
             <td><strong>{{@key}}</strong></td>
-            <td>{{this}}</td>
+            <td>
+                {{#if (isArray this)}}
+                    {{#each this}}
+                        {{this}}<br>
+                    {{/each}}
+                {{else}}
+                    {{this}}
+                {{/if}}
+            </td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+
 
 <br>
 <!-- Role-specific content -->
