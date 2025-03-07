@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', function (req, res, next) {
     res.render('index', {
-        title: 'MSAL Node & Express Web App',
+        title: 'UNFCU External ID Demo',
         isAuthenticated: req.session.isAuthenticated,
         username: req.session.account?.username !== '' ? req.session.account?.username : req.session.account?.name,
     });
