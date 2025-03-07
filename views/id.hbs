@@ -11,6 +11,25 @@
     </tbody>
 </table>
 <br>
+<!-- Role-specific content -->
+{{#if idTokenClaims.roles}}
+    {{#if (eq idTokenClaims.roles.[0] 'msr')}}
+        <p>Welcome MSR!</p>
+        <img src="/images/msr-icon.png" alt="MSR Image" style="width:100%; max-width:600px; height:auto;">
+    {{else if (eq idTokenClaims.roles.[0] 'member')}}
+        <p>Welcome Member!</p>
+        <img src="/images/member-icon.png" alt="Member Image" style="width:100%; max-width:600px; height:auto;">
+    {{else}}
+        <p>Welcome!</p>
+        <img src="/images/default.jpg" alt="Default Image" style="width:100%; max-width:600px; height:auto;">
+    {{/if}}
+{{else}}
+    <p>Welcome! No roles assigned.</p>
+    <img src="/images/default.jpg" alt="Default Image" style="width:100%; max-width:600px; height:auto;">
+{{/if}}
+
+<br>
+
 <a href="https://aka.ms/id-tokens" target="_blank">Learn about claims in this ID token</a>
 <br>
 <a href="/">Go back</a>
