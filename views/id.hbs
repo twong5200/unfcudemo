@@ -11,28 +11,24 @@
    <img src="/images/admin-icon.png" alt="MSR Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">  
 {{/if}}
 
-<h3 style="color: #34495e; font-family: Arial, sans-serif; margin: 20px 0 15px;">ID Token Claims</h3>
-<table style="width: 100%; max-width: 800px; border-collapse: collapse; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+<h3>ID Token</h3>
+
+<table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Claim</th>
+            <th>Value</th>
+        </tr>
+    </thead>
     <tbody>
         {{#each idTokenClaims}}
-        <tr style="border-bottom: 1px solid #ecf0f1;">
-            <td style="padding: 12px 15px; font-family: Arial, sans-serif; color: #7f8c8d; font-weight: bold;">{{@key}}</td>
-            <td style="padding: 12px 15px; font-family: Arial, sans-serif; color: #2c3e50;">
-                {{#if (eq @key 'groups')}}
-                    {{#if this.length}}
-                        {{join this ', '}}
-                    {{else}}
-                        {{this}}
-                    {{/if}}
-                {{else}}
-                    {{this}}
-                {{/if}}
-            </td>
+        <tr>
+            <td><strong>{{@key}}</strong></td>
+            <td>{{this}}</td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-
 
 <br>
 
