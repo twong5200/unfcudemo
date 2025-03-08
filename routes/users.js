@@ -22,13 +22,14 @@ router.get('/id',
         const isMsr = Array.isArray(roles) && roles.includes('msr');
         const isMsr2 = Array.isArray(roles) && roles.includes('msrlevel2');
         const isMember = Array.isArray(roles) && roles.includes('member');
-        const username = req.session.account?.username !== '' ? req.session.account?.username : req.session.account?.name;
+        const name = req.session.account?.name;
 
         res.render('id', { 
             idTokenClaims: req.session.account.idTokenClaims,
             isMsr: isMsr,
             isMember: isMember,
-            username: username
+            isMsr2: isMsr2,
+            name: name
         });
     }
 );
