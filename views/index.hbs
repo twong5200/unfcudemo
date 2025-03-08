@@ -1,4 +1,16 @@
-<h1>{{title}}</h1>
+<h1 style="color: #2c3e50; font-family: Arial, sans-serif; margin-bottom: 20px;">{{title}}</h1>
+
+{{#if name}}
+    <h2 style="color: #2980b9; font-family: Arial, sans-serif; margin: 15px 0;">Welcome {{name}}!</h2>
+    {{#if isMsr}}
+        <img src="/images/admin-icon.png" alt="MSR Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">
+    {{else if isMember}}
+        <img src="/images/user-icon.png" alt="Member Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">
+    {{else if isMsr2}}
+        <img src="/images/admin-icon.png" alt="MSR Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">
+    {{/if}}
+{{/if}}
+
 {{#if isAuthenticated }}
 <p>Hi {{username}}!</p>
 <a href="/users/id">View ID token claims</a>
