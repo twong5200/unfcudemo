@@ -27,7 +27,7 @@ router.get('/id',
         res.render('id', { 
             idTokenClaims: req.session.account.idTokenClaims,
             isMsr: isMsr,
-            isMember: isMember
+            isMember: isMember,
             username: username
         });
     }
