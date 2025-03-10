@@ -14,9 +14,7 @@ function isAuthenticated(req, res, next) {
     next();
 };
 
-router.get('/',
-    isAuthenticated, // check if user is authenticated
-    async function (req, res, next) {
+router.get('/', function (req, res, next) {
         // Check if roles exist in idTokenClaims and determine user type
         const roles = req.session.account.idTokenClaims?.roles || [];
         const isMsr = Array.isArray(roles) && roles.includes('msr');
@@ -25,7 +23,9 @@ router.get('/',
         const name = req.session.account?.name;
 
         res.render('index', { 
+            title: 'MSAL Node & Express Web App',
             idTokenClaims: req.session.account.idTokenClaims,
+            isAuthenticated: req.session.isAuthenticated,
             isMsr: isMsr,
             isMember: isMember,
             isMsr2: isMsr2,
