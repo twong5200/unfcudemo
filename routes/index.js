@@ -24,7 +24,6 @@ router.get('/', function (req, res, next) {
 
         res.render('index', { 
             title: 'MSAL Node & Express Web App',
-            idTokenClaims: req.session.account.idTokenClaims,
             isAuthenticated: req.session.isAuthenticated,
             isMsr: isMsr,
             isMember: isMember,
