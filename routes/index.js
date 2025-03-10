@@ -14,7 +14,7 @@ function isAuthenticated(req, res, next) {
     next();
 };
 
-router.get('/id',
+router.get('/',
     isAuthenticated, // check if user is authenticated
     async function (req, res, next) {
         // Check if roles exist in idTokenClaims and determine user type
@@ -24,7 +24,7 @@ router.get('/id',
         const isMember = Array.isArray(roles) && roles.includes('member');
         const name = req.session.account?.name;
 
-        res.render('id', { 
+        res.render('index', { 
             idTokenClaims: req.session.account.idTokenClaims,
             isMsr: isMsr,
             isMember: isMember,
