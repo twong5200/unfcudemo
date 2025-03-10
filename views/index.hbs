@@ -4,10 +4,13 @@
     <h2 style="color: #2980b9; font-family: Arial, sans-serif; margin: 15px 0;">Welcome {{name}}!</h2>
     {{#if isMsr}}
         <img src="/images/admin-icon.png" alt="MSR Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">
+        <p style="font-family: Arial, sans-serif; color: #34495e; margin: 0 0 25px 0;">You are an MSR user with special privileges.</p>
     {{else if isMember}}
         <img src="/images/user-icon.png" alt="Member Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">
+        <p style="font-family: Arial, sans-serif; color: #34495e; margin: 0 0 25px 0;">You are a member.</p>
     {{else if isMsr2}}
         <img src="/images/admin-icon.png" alt="MSR Picture" style="max-width: 100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 25px;">
+        <p style="font-family: Arial, sans-serif; color: #34495e; margin: 0 0 25px 0;">You are an MSR user with special privileges.</p>
     {{/if}}
 {{/if}}
 
