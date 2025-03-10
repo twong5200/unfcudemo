@@ -3,28 +3,37 @@
  * Licensed under the MIT License.
  */
 
-const express = require('express');
-const router = express.Router();
-
-
+var express = require('express');
+var router = express.Router();
 
 router.get('/', function (req, res, next) {
-        // Check if roles exist in idTokenClaims and determine user type
-        const roles = req.session.account.idTokenClaims?.roles || [];
-        const isMsr = Array.isArray(roles) && roles.includes('msr');
-        const isMsr2 = Array.isArray(roles) && roles.includes('msrlevel2');
-        const isMember = Array.isArray(roles) && roles.includes('member');
-        const name = req.session.account?.name;
+    // Default values for when user is not authenticated
+    var roles = [];
+    var isMsr = false;
+    var isMember = false;
+    var isMsr2 = false;
+    var name = null;
+    var username = null;
 
-        res.render('index', { 
-            title: 'MSAL Node & Express Web App',
-            isAuthenticated: req.session.isAuthenticated,
-            isMsr: isMsr,
-            isMember: isMember,
-            isMsr2: isMsr2,
-            name: name
-        });
+    // If authenticated, populate values from session
+    if (req.session.account) {
+        roles = req.session.account.idTokenClaims?.roles || [];
+        isMsr = Array.isArray(roles) && roles.includes('msr');
+        isMember = Array.isArray(roles) && roles.includes('member');
+        isMsr2 = Array.isArray(roles) && roles.includes('msrlevel2');
+        name = req.session.account.name;
+        username = req.session.account.username !== '' ? req.session.account.username : req.session.account.name;
     }
-);
+
+    res.render('index', {
+        title: 'UNFCU External ID Demo',
+        isAuthenticated: req.session.isAuthenticated,
+        username: username,
+        name: name,
+        isMsr: isMsr,
+        isMember: isMember,
+        isMsr2: isMsr2
+    });
+});
 
 module.exports = router;
