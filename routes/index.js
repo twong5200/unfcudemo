@@ -21,6 +21,7 @@ router.get('/', function (req, res, next) {
         isMsr = Array.isArray(roles) && roles.includes('msr');
         isMember = Array.isArray(roles) && roles.includes('member');
         isMsr2 = Array.isArray(roles) && roles.includes('msrlevel2');
+        isMsr3 = Array.isArray(roles) && roles.includes('msr3');
         name = req.session.account.name;
         username = req.session.account.username !== '' ? req.session.account.username : req.session.account.name;
     }
